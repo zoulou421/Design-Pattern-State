@@ -3,11 +3,6 @@ package com.formationkilo;
 public class ClassWithState {
 	private State state;
 
-	public ClassWithState(State state) {
-		this.state = state;
-		state.setClassWithState(this);
-	}
-
 	public void operationA() {
 		state.operationA();
 	}
@@ -24,9 +19,16 @@ public class ClassWithState {
 		state.doAction();
 	}
 
+	public ClassWithState() {
+		this.state = new StateA();
+		state.setClassWithState(this);
+	}
+
 	public void setState(State state) {
 		this.state = state;
+		state.setClassWithState(this);
 	}
+	
 	
 	
 
